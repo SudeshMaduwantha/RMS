@@ -214,6 +214,7 @@
             btnStaff.TabIndex = 6;
             btnStaff.Text = "Staff";
             btnStaff.TextOffset = new Point(5, 0);
+            btnStaff.Click += btnStaff_Click;
             // 
             // btnTables
             // 

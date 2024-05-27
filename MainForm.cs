@@ -21,7 +21,7 @@ namespace RMS
         static MainForm _obj;
         public static MainForm Instance
         {
-            get { if(_obj == null ) _obj= new MainForm();return _obj;}
+            get { if (_obj == null) _obj = new MainForm(); return _obj; }
         }
 
         public void AddControls(Form f)
@@ -58,6 +58,11 @@ namespace RMS
         private void btnTables_Click(object sender, EventArgs e)
         {
             AddControls(new TableView());
+        }
+
+        private void btnStaff_Click(object sender, EventArgs e)
+        {
+            AddControls(new StaffViews());
         }
     }
 }
