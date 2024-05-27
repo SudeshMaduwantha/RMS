@@ -39,6 +39,7 @@
             dgvName = new DataGridViewTextBoxColumn();
             dgvedit = new DataGridViewImageColumn();
             dgvdel = new DataGridViewImageColumn();
+            guna2MessageDialog1 = new Guna.UI2.WinForms.Guna2MessageDialog();
             ((System.ComponentModel.ISupportInitialize)guna2DataGridView1).BeginInit();
             SuspendLayout();
             // 
@@ -102,7 +103,7 @@
             guna2DataGridView1.Name = "guna2DataGridView1";
             guna2DataGridView1.ReadOnly = true;
             guna2DataGridView1.RowHeadersVisible = false;
-            guna2DataGridView1.RowTemplate.Height = 25;
+            guna2DataGridView1.RowTemplate.Height = 35;
             guna2DataGridView1.Size = new Size(728, 270);
             guna2DataGridView1.TabIndex = 5;
             guna2DataGridView1.ThemeStyle.AlternatingRowsStyle.BackColor = Color.White;
@@ -123,9 +124,10 @@
             guna2DataGridView1.ThemeStyle.RowsStyle.BorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
             guna2DataGridView1.ThemeStyle.RowsStyle.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             guna2DataGridView1.ThemeStyle.RowsStyle.ForeColor = Color.FromArgb(71, 69, 94);
-            guna2DataGridView1.ThemeStyle.RowsStyle.Height = 25;
+            guna2DataGridView1.ThemeStyle.RowsStyle.Height = 35;
             guna2DataGridView1.ThemeStyle.RowsStyle.SelectionBackColor = Color.FromArgb(231, 229, 255);
             guna2DataGridView1.ThemeStyle.RowsStyle.SelectionForeColor = Color.FromArgb(71, 69, 94);
+            guna2DataGridView1.CellClick += guna2DataGridView1_CellClick;
             // 
             // dgvSno
             // 
@@ -174,6 +176,15 @@
             dgvdel.ReadOnly = true;
             dgvdel.Width = 50;
             // 
+            // guna2MessageDialog1
+            // 
+            guna2MessageDialog1.Buttons = Guna.UI2.WinForms.MessageDialogButtons.OK;
+            guna2MessageDialog1.Caption = "RMS";
+            guna2MessageDialog1.Icon = Guna.UI2.WinForms.MessageDialogIcon.Question;
+            guna2MessageDialog1.Parent = null;
+            guna2MessageDialog1.Style = Guna.UI2.WinForms.MessageDialogStyle.Light;
+            guna2MessageDialog1.Text = null;
+            // 
             // CategoryView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -201,5 +212,6 @@
         private DataGridViewTextBoxColumn dgvName;
         private DataGridViewImageColumn dgvedit;
         private DataGridViewImageColumn dgvdel;
+        public Guna.UI2.WinForms.Guna2MessageDialog guna2MessageDialog1;
     }
 }

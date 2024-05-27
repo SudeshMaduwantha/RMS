@@ -42,6 +42,7 @@
             guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
             btnClose = new Guna.UI2.WinForms.Guna2Button();
             btnSave = new Guna.UI2.WinForms.Guna2Button();
+            guna2MessageDialog1 = new Guna.UI2.WinForms.Guna2MessageDialog();
             guna2Panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             guna2Panel2.SuspendLayout();
@@ -137,6 +138,15 @@
             btnSave.Text = "SAVE";
             btnSave.Click += btnSave_Click;
             // 
+            // guna2MessageDialog1
+            // 
+            guna2MessageDialog1.Buttons = Guna.UI2.WinForms.MessageDialogButtons.OK;
+            guna2MessageDialog1.Caption = "RMS";
+            guna2MessageDialog1.Icon = Guna.UI2.WinForms.MessageDialogIcon.Question;
+            guna2MessageDialog1.Parent = this;
+            guna2MessageDialog1.Style = Guna.UI2.WinForms.MessageDialogStyle.Light;
+            guna2MessageDialog1.Text = null;
+            // 
             // SampleAdd
             // 
             AutoScaleMode = AutoScaleMode.None;
@@ -163,5 +173,6 @@
         public Guna.UI2.WinForms.Guna2Button btnClose;
         public Guna.UI2.WinForms.Guna2Panel guna2Panel2;
         public Label label1;
+        public Guna.UI2.WinForms.Guna2MessageDialog guna2MessageDialog1;
     }
 }

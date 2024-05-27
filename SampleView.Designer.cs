@@ -40,6 +40,7 @@
             // 
             // SearchTxt
             // 
+            SearchTxt.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             SearchTxt.CustomizableEdges = customizableEdges1;
             SearchTxt.DefaultText = "";
             SearchTxt.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
@@ -62,6 +63,7 @@
             // 
             // label1
             // 
+            label1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             label1.AutoSize = true;
             label1.Location = new Point(496, 64);
             label1.Name = "label1";
@@ -96,6 +98,7 @@
             // 
             // guna2Separator1
             // 
+            guna2Separator1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             guna2Separator1.Location = new Point(34, 134);
             guna2Separator1.Name = "guna2Separator1";
             guna2Separator1.Size = new Size(728, 10);

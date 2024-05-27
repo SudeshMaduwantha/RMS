@@ -22,24 +22,25 @@ namespace RMS.Model
         {
             string qry = "";
 
-            if(id == 0)
+            if (id == 0)
             {
                 qry = "Insert into category Values(@Name)";
 
             }
             else
             {
-                qry ="Update category Set catName = @Name where catID =@id";
+                qry = "Update category Set catName = @Name where catID =@id";
             }
 
             Hashtable ht = new Hashtable();
             ht.Add("@id", id);
-            ht.Add("@Name",txtName.Text);
+            ht.Add("@Name", txtName.Text);
 
-            if(MainClass.Sql(qry,ht)>0)
+            if (MainClass.Sql(qry, ht) > 0)
             {
-                MessageBox.Show("Saved Successfully!");
+                guna2MessageDialog1.Show("Saved Successfully!");
                 id = 0;
+                txtName.Text ="";
                 txtName.Focus();
             }
         }

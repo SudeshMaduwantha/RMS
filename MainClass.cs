@@ -8,6 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Data.SqlClient;
 using System.Collections;
+using System.Drawing.Text;
+using MigraDoc.DocumentObjectModel.Internals;
+using System.Windows.Forms;
 
 namespace RMS
 {
@@ -71,31 +74,46 @@ namespace RMS
 
         //For loading Data from Database
 
-        public static void LoadData(string qry, DataGridView gv,ListBox lb)
+        // For loading Data from Database
+        public static void LoadData(string qry, DataGridView gv, ListBox lb)
         {
+            // Serial in grid view
+            gv.CellFormatting += new DataGridViewCellFormattingEventHandler(GV_CellFormatting);
+
             try
             {
                 SqlCommand cmd = new SqlCommand(qry, con);
-                cmd .CommandType = CommandType.Text;
+                cmd.CommandType = CommandType.Text;
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
                 DataTable dt = new DataTable();
                 da.Fill(dt);
 
-                for (int i = 0;i<lb.Items.Count;i++)
+                for (int i = 0; i < lb.Items.Count; i++)
                 {
-                    string colNam1 = ((DataGridViewColumn)lb.Items[i]).Name;
-                    gv.Columns[colNam1].DataPropertyName = dt.Columns[i].ToString();
-
+                    string colName = ((DataGridViewColumn)lb.Items[i]).Name;
+                    gv.Columns[colName].DataPropertyName = dt.Columns[i].ToString();
                 }
-                gv.DataSource = dt; 
-
+                gv.DataSource = dt;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
                 con.Close();
             }
-
         }
+
+        // This is the event handler method for CellFormatting
+        private static void GV_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            DataGridView gv = (DataGridView)sender;
+            int count = 0;
+
+            foreach (DataGridViewRow row in gv.Rows)
+            {
+                count++;
+                row.Cells[0].Value = count;
+            }
+        }
+    
     }
 }
