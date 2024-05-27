@@ -157,11 +157,11 @@
         }
 
         #endregion
-        private Label label1;
         public Guna.UI2.WinForms.Guna2Panel guna2Panel1;
         public PictureBox pictureBox1;
         public Guna.UI2.WinForms.Guna2Button btnSave;
         public Guna.UI2.WinForms.Guna2Button btnClose;
         public Guna.UI2.WinForms.Guna2Panel guna2Panel2;
+        public Label label1;
     }
 }

@@ -8,23 +8,21 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace RMS
+namespace RMS.View
 {
-    public partial class SampleAdd : Form
+    public partial class CategoryView : SampleView
     {
-        public SampleAdd()
+        public CategoryView()
         {
             InitializeComponent();
         }
 
-        public void btnClose_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        public virtual void btnSave_Click(object sender, EventArgs e)
+        public virtual void btnAdd_Click_1(object sender, EventArgs e)
         {
 
         }
+
+
     }
+
 }
