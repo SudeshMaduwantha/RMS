@@ -17,6 +17,12 @@ namespace RMS
         {
             InitializeComponent();
         }
+        //for accessing MainForm
+        static MainForm _obj;
+        public static MainForm Instance
+        {
+            get { if(_obj == null ) _obj= new MainForm();return _obj;}
+        }
 
         public void AddControls(Form f)
         {
@@ -36,6 +42,7 @@ namespace RMS
         private void MainForm_Load(object sender, EventArgs e)
         {
             lblUser.Text = MainClass.USER;
+            _obj = this;
         }
 
         private void btnHome_Click(object sender, EventArgs e)
@@ -46,6 +53,11 @@ namespace RMS
         private void btnCategories_Click(object sender, EventArgs e)
         {
             AddControls(new CategoryView());
+        }
+
+        private void btnTables_Click(object sender, EventArgs e)
+        {
+            AddControls(new TableView());
         }
     }
 }

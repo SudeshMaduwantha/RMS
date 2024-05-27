@@ -243,6 +243,7 @@
             btnTables.TabIndex = 5;
             btnTables.Text = "Tables";
             btnTables.TextOffset = new Point(5, 0);
+            btnTables.Click += btnTables_Click;
             // 
             // btnProducts
             // 
