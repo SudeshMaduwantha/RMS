@@ -67,12 +67,17 @@
             label2.Size = new Size(121, 25);
             label2.Text = "Category List";
             // 
+            // label1
+            // 
+            label1.Location = new Point(496, 56);
+            // 
             // guna2DataGridView1
             // 
             guna2DataGridView1.AllowUserToAddRows = false;
             guna2DataGridView1.AllowUserToDeleteRows = false;
             dataGridViewCellStyle1.BackColor = Color.White;
             guna2DataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            guna2DataGridView1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = Color.FromArgb(232, 234, 237);
             dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
@@ -177,6 +182,8 @@
             Controls.Add(guna2DataGridView1);
             Name = "CategoryView";
             Text = "CategoryView";
+            Load += CategoryView_Load;
+            Controls.SetChildIndex(label1, 0);
             Controls.SetChildIndex(SearchTxt, 0);
             Controls.SetChildIndex(btnAdd, 0);
             Controls.SetChildIndex(label2, 0);

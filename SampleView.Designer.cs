@@ -122,10 +122,10 @@
         #endregion
 
         private Guna.UI2.WinForms.Guna2TextBox guna2TextBox1;
-        private Label label1;
         public Guna.UI2.WinForms.Guna2TextBox SearchTxt;
         public Guna.UI2.WinForms.Guna2ImageButton btnAdd;
         public Label label2;
         private Guna.UI2.WinForms.Guna2Separator guna2Separator1;
+        public Label label1;
     }
 }

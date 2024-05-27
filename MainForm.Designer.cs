@@ -301,6 +301,7 @@
             btnCategories.TabIndex = 3;
             btnCategories.Text = "Categories";
             btnCategories.TextOffset = new Point(5, 0);
+            btnCategories.Click += btnCategories_Click;
             // 
             // btnHome
             // 

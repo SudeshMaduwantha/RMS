@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Data.SqlClient;
-
+using System.Collections;
 
 namespace RMS
 {
@@ -41,6 +41,61 @@ namespace RMS
             private set { user = value; }
         }
 
-        
+        //mrthod to crud operations
+
+        public static int Sql(string qry, Hashtable ht)
+        {
+            int res = 0; 
+            
+            try
+            {
+                SqlCommand cmd = new SqlCommand(qry, con);
+                cmd.CommandType = CommandType.Text;
+
+                foreach(DictionaryEntry item in ht)
+                {
+                    cmd.Parameters.AddWithValue(item.Key. ToString(),item.Value);
+                }
+                if(con.State == ConnectionState.Closed) { con.Open(); }
+                res = cmd.ExecuteNonQuery();
+                if (con.State == ConnectionState.Open) { con.Close(); }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+                con.Close();
+            }
+
+            return res;
+        }
+
+        //For loading Data from Database
+
+        public static void LoadData(string qry, DataGridView gv,ListBox lb)
+        {
+            try
+            {
+                SqlCommand cmd = new SqlCommand(qry, con);
+                cmd .CommandType = CommandType.Text;
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+
+                for (int i = 0;i<lb.Items.Count;i++)
+                {
+                    string colNam1 = ((DataGridViewColumn)lb.Items[i]).Name;
+                    gv.Columns[colNam1].DataPropertyName = dt.Columns[i].ToString();
+
+                }
+                gv.DataSource = dt; 
+
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+                con.Close();
+            }
+
+        }
     }
 }
