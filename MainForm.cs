@@ -17,7 +17,7 @@ namespace RMS
             InitializeComponent();
         }
 
-        public static void AddControls(Form f)
+        public void AddControls(Form f)
         {
             centerPanel.Controls.Clear();
             f.Dock = DockStyle.Fill;
@@ -35,6 +35,11 @@ namespace RMS
         private void MainForm_Load(object sender, EventArgs e)
         {
             lblUser.Text = MainClass.USER;
+        }
+
+        private void btnHome_Click(object sender, EventArgs e)
+        {
+            AddControls(new Home());
         }
     }
 }
