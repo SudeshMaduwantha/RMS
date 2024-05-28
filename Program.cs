@@ -1,3 +1,5 @@
+using RMS.Model;
+
 namespace RMS
 {
     internal static class Program

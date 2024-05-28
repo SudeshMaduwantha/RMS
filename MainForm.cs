@@ -1,4 +1,5 @@
-﻿using RMS.View;
+﻿using RMS.Model;
+using RMS.View;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -68,6 +69,12 @@ namespace RMS
         private void btnProducts_Click(object sender, EventArgs e)
         {
             AddControls(new ProductView());
+        }
+
+        private void btnPOS_Click(object sender, EventArgs e)
+        {
+            POS pOS = new POS();
+            pOS.ShowDialog();
         }
     }
 }

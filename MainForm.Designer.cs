@@ -185,6 +185,7 @@
             btnPOS.TabIndex = 7;
             btnPOS.Text = "POS";
             btnPOS.TextOffset = new Point(5, 0);
+            btnPOS.Click += btnPOS_Click;
             // 
             // btnStaff
             // 
