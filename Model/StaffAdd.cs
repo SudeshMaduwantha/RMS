@@ -42,17 +42,17 @@ namespace RMS.Model
             Hashtable ht = new Hashtable();
             ht.Add("@id", id);
             ht.Add("@Name", txtName.Text);
-            ht.Add("@phone",txtPhone.Text);
-            ht.Add("@role",cbRole.Text);
+            ht.Add("@phone", txtPhone.Text);
+            ht.Add("@role", cbRole.Text);
 
             if (MainClass.Sql(qry, ht) > 0)
             {
                 guna2MessageDialog1.Show("Saved Successfully!");
                 id = 0;
-                txtName.Text = "";       
+                txtName.Text = "";
                 txtPhone.Text = "";
                 cbRole.SelectedIndex = -1;
-                txtName.Focus();              
+                txtName.Focus();
             }
         }
     }

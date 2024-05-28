@@ -274,6 +274,7 @@
             btnProducts.TabIndex = 4;
             btnProducts.Text = "Products";
             btnProducts.TextOffset = new Point(5, 0);
+            btnProducts.Click += btnProducts_Click;
             // 
             // btnCategories
             // 

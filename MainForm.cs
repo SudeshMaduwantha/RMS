@@ -64,5 +64,10 @@ namespace RMS
         {
             AddControls(new StaffViews());
         }
+
+        private void btnProducts_Click(object sender, EventArgs e)
+        {
+            AddControls(new ProductView());
+        }
     }
 }
