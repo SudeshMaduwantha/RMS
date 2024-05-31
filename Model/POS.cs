@@ -9,6 +9,7 @@ using System.Data.SqlClient;
 using System.Drawing;
 using System.Drawing.Text;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -390,5 +391,49 @@ namespace RMS.Model
             lblTotal.Text = "00";
         }
 
+        public int id = 0;
+
+        private void btnBill_Click(object sender, EventArgs e)
+        {
+            BillList billList = new BillList();
+            billList.ShowDialog();
+
+            if(billList.MainID > 0)
+            {
+                id = billList.MainID;
+                LoadEntres();
+            }
+        }
+
+        private void LoadEntres()
+        {
+            string qry = @"Select * from tblMain m
+                                inner join tblDetails d on m.MainID = d.MainID
+                                inner join products p on p.pID = d.proID
+                                where m.MainID = " + id + "";
+
+            SqlCommand cmd2 = new SqlCommand(qry, MainClass.con);
+            DataTable dt2 = new DataTable();
+            SqlDataAdapter da2 = new SqlDataAdapter(cmd2);
+            da2.Fill(dt2);
+
+            guna2DataGridView1.Rows.Clear();
+
+            foreach(DataRow item in dt2.Rows )
+            {
+                string detailid = item["DetailID"].ToString();
+                string proName = item["pName"].ToString();
+                string proid = item["proID"].ToString();
+                string qty = item["qty"].ToString();
+                string price = item["price"].ToString();
+                string amount = item["amount"].ToString();
+                
+                   
+                object[] obj = {0,detailid,proid,proName,qty,price,amount };
+                guna2DataGridView1.Rows.Add(obj);
+
+            }
+            GetTotal();
+        }
     }
 }

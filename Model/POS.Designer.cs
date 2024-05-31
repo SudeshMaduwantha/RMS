@@ -286,6 +286,7 @@
             btnBill.Size = new Size(78, 78);
             btnBill.TabIndex = 4;
             btnBill.Text = "Bill List";
+            btnBill.Click += btnBill_Click;
             // 
             // btnHold
             // 
