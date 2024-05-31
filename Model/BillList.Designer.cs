@@ -244,12 +244,11 @@
             dgvdel.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
             dgvdel.FillWeight = 50F;
             dgvdel.HeaderText = "";
-            dgvdel.Image = Properties.Resources.delete;
+            dgvdel.Image = Properties.Resources.printer;
             dgvdel.ImageLayout = DataGridViewImageCellLayout.Zoom;
             dgvdel.MinimumWidth = 50;
             dgvdel.Name = "dgvdel";
             dgvdel.ReadOnly = true;
-            dgvdel.Visible = false;
             dgvdel.Width = 50;
             // 
             // BillList

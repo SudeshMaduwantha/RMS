@@ -62,6 +62,11 @@ namespace RMS.Model
 
             }
 
+            if (guna2DataGridView1.CurrentCell.OwningColumn.Name == "dgvedel")
+            {
+                //Print Bill
+            }
+
         }
     }
 }
