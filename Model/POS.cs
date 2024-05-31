@@ -13,6 +13,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace RMS.Model
 {
@@ -388,7 +389,7 @@ namespace RMS.Model
             lblWaiter.Text = "";
             lblTable.Visible = false;
             lblWaiter.Visible = false;
-            lblTotal.Text = "00";
+            lblTotal.Text = "0.00";
         }
 
         public int id = 0;
@@ -398,7 +399,7 @@ namespace RMS.Model
             BillList billList = new BillList();
             billList.ShowDialog();
 
-            if(billList.MainID > 0)
+            if (billList.MainID > 0)
             {
                 id = billList.MainID;
                 LoadEntres();
@@ -408,32 +409,78 @@ namespace RMS.Model
         private void LoadEntres()
         {
             string qry = @"Select * from tblMain m
-                                inner join tblDetails d on m.MainID = d.MainID
-                                inner join products p on p.pID = d.proID
-                                where m.MainID = " + id + "";
+                   inner join tblDetails d on m.MainID = d.MainID
+                   inner join products p on p.pID = d.proID
+                   where m.MainID = @MainID";
 
             SqlCommand cmd2 = new SqlCommand(qry, MainClass.con);
+            cmd2.Parameters.AddWithValue("@MainID", id); // Use parameterized query to prevent SQL injection
+
             DataTable dt2 = new DataTable();
             SqlDataAdapter da2 = new SqlDataAdapter(cmd2);
             da2.Fill(dt2);
 
+            if (dt2.Rows.Count == 0)
+            {
+                MessageBox.Show("No entries found for the specified ID.");
+                return;
+            }
+
+            if (dt2.Rows[0]["orderType"].ToString() == "Delivery")
+            {
+                btnDelivery.Checked = true;
+                lblWaiter.Visible = false;
+                lblTable.Visible = false;
+            }
+            else if (dt2.Rows[0]["orderType"].ToString() == "Take Away")
+            {
+                btnDelivery.Checked = true;
+                lblWaiter.Visible = false;
+                lblTable.Visible = false;
+            }
+            else
+            {
+                btnDelivery.Checked = true;
+                lblWaiter.Visible = true;
+                lblTable.Visible = true;
+            }
+
             guna2DataGridView1.Rows.Clear();
 
-            foreach(DataRow item in dt2.Rows )
+            foreach (DataRow item in dt2.Rows)
             {
+                lblTable.Text = item["TableName"].ToString();
+                lblWaiter.Text = item["waiterName"].ToString();
                 string detailid = item["DetailID"].ToString();
                 string proName = item["pName"].ToString();
                 string proid = item["proID"].ToString();
                 string qty = item["qty"].ToString();
                 string price = item["price"].ToString();
                 string amount = item["amount"].ToString();
-                
-                   
-                object[] obj = {0,detailid,proid,proName,qty,price,amount };
-                guna2DataGridView1.Rows.Add(obj);
 
+                object[] obj = { 0, detailid, proid, proName, qty, price, amount };
+                guna2DataGridView1.Rows.Add(obj);
             }
+
             GetTotal();
+        }
+
+
+        private void btnCheckout_Click(object sender, EventArgs e)
+        {
+            Checkout checkout = new Checkout();
+            checkout.MainID = id;
+            checkout.amt = Convert.ToDouble(lblTotal.Text);
+            checkout.ShowDialog();
+
+
+            MainID = 0;
+            guna2DataGridView1.Rows.Clear();
+            lblTable.Text = "";
+            lblWaiter.Text = "";
+            lblTable.Visible = false;
+            lblWaiter.Visible = false;
+            lblTotal.Text = "0.00";
         }
     }
 }

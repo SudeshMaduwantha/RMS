@@ -48,13 +48,17 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges16 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges17 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges18 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges23 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges24 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges21 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges22 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges23 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges24 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges25 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges26 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges27 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges28 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             btnExit = new Guna.UI2.WinForms.Guna2PictureBox();
             lblWaiter = new Label();
@@ -69,6 +73,7 @@
             label1 = new Label();
             guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
             guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
+            btnCheckout = new Guna.UI2.WinForms.Guna2Button();
             lblTotal = new Label();
             label2 = new Label();
             CategoryPanel = new FlowLayoutPanel();
@@ -83,6 +88,8 @@
             dgvAmount = new DataGridViewTextBoxColumn();
             SearchTxt = new Guna.UI2.WinForms.Guna2TextBox();
             guna2MessageDialog1 = new Guna.UI2.WinForms.Guna2MessageDialog();
+            guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
+            label3 = new Label();
             guna2Panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)btnExit).BeginInit();
             ((System.ComponentModel.ISupportInitialize)guna2PictureBox1).BeginInit();
@@ -368,16 +375,41 @@
             // 
             // guna2Panel2
             // 
+            guna2Panel2.Controls.Add(label3);
+            guna2Panel2.Controls.Add(btnCheckout);
             guna2Panel2.Controls.Add(lblTotal);
             guna2Panel2.Controls.Add(label2);
-            guna2Panel2.CustomizableEdges = customizableEdges21;
+            guna2Panel2.CustomizableEdges = customizableEdges23;
             guna2Panel2.Dock = DockStyle.Bottom;
             guna2Panel2.FillColor = Color.FromArgb(50, 55, 89);
             guna2Panel2.Location = new Point(0, 590);
             guna2Panel2.Name = "guna2Panel2";
-            guna2Panel2.ShadowDecoration.CustomizableEdges = customizableEdges22;
+            guna2Panel2.ShadowDecoration.CustomizableEdges = customizableEdges24;
             guna2Panel2.Size = new Size(1187, 100);
             guna2Panel2.TabIndex = 1;
+            // 
+            // btnCheckout
+            // 
+            btnCheckout.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            btnCheckout.AutoRoundedCorners = true;
+            btnCheckout.BackColor = Color.Transparent;
+            btnCheckout.BorderRadius = 21;
+            customizableEdges21.TopRight = false;
+            btnCheckout.CustomizableEdges = customizableEdges21;
+            btnCheckout.DisabledState.BorderColor = Color.DarkGray;
+            btnCheckout.DisabledState.CustomBorderColor = Color.DarkGray;
+            btnCheckout.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btnCheckout.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnCheckout.FillColor = Color.FromArgb(241, 85, 126);
+            btnCheckout.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            btnCheckout.ForeColor = Color.White;
+            btnCheckout.Location = new Point(827, 29);
+            btnCheckout.Name = "btnCheckout";
+            btnCheckout.ShadowDecoration.CustomizableEdges = customizableEdges22;
+            btnCheckout.Size = new Size(117, 45);
+            btnCheckout.TabIndex = 10;
+            btnCheckout.Text = "Check Out";
+            btnCheckout.Click += btnCheckout_Click;
             // 
             // lblTotal
             // 
@@ -407,9 +439,9 @@
             // 
             // CategoryPanel
             // 
-            CategoryPanel.Location = new Point(12, 159);
+            CategoryPanel.Location = new Point(12, 205);
             CategoryPanel.Name = "CategoryPanel";
-            CategoryPanel.Size = new Size(126, 428);
+            CategoryPanel.Size = new Size(126, 382);
             CategoryPanel.TabIndex = 2;
             // 
             // ProductPanel
@@ -542,7 +574,7 @@
             // 
             // SearchTxt
             // 
-            SearchTxt.CustomizableEdges = customizableEdges23;
+            SearchTxt.CustomizableEdges = customizableEdges25;
             SearchTxt.DefaultText = "";
             SearchTxt.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
             SearchTxt.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
@@ -557,7 +589,7 @@
             SearchTxt.PasswordChar = '\0';
             SearchTxt.PlaceholderText = "Search Here";
             SearchTxt.SelectedText = "";
-            SearchTxt.ShadowDecoration.CustomizableEdges = customizableEdges24;
+            SearchTxt.ShadowDecoration.CustomizableEdges = customizableEdges26;
             SearchTxt.Size = new Size(351, 36);
             SearchTxt.TabIndex = 9;
             SearchTxt.TextChanged += SearchTxt_TextChanged;
@@ -571,10 +603,40 @@
             guna2MessageDialog1.Style = Guna.UI2.WinForms.MessageDialogStyle.Light;
             guna2MessageDialog1.Text = null;
             // 
+            // guna2Button1
+            // 
+            guna2Button1.CustomizableEdges = customizableEdges27;
+            guna2Button1.DisabledState.BorderColor = Color.DarkGray;
+            guna2Button1.DisabledState.CustomBorderColor = Color.DarkGray;
+            guna2Button1.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            guna2Button1.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            guna2Button1.FillColor = Color.FromArgb(50, 55, 89);
+            guna2Button1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            guna2Button1.ForeColor = Color.White;
+            guna2Button1.Location = new Point(12, 159);
+            guna2Button1.Name = "guna2Button1";
+            guna2Button1.ShadowDecoration.CustomizableEdges = customizableEdges28;
+            guna2Button1.Size = new Size(126, 45);
+            guna2Button1.TabIndex = 0;
+            guna2Button1.Text = "All Categories";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.BackColor = Color.Transparent;
+            label3.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label3.ForeColor = Color.DarkGray;
+            label3.Location = new Point(3, 80);
+            label3.Name = "label3";
+            label3.Size = new Size(287, 17);
+            label3.TabIndex = 0;
+            label3.Text = "Developped By Sudesh Maduwantha Kumarasiri";
+            // 
             // POS
             // 
             AutoScaleMode = AutoScaleMode.None;
             ClientSize = new Size(1187, 690);
+            Controls.Add(guna2Button1);
             Controls.Add(SearchTxt);
             Controls.Add(guna2DataGridView1);
             Controls.Add(ProductPanel);
@@ -627,5 +689,8 @@
         private DataGridViewTextBoxColumn dgvQty;
         private DataGridViewTextBoxColumn dgvAmount;
         private Guna.UI2.WinForms.Guna2MessageDialog guna2MessageDialog1;
+        public Guna.UI2.WinForms.Guna2Button btnCheckout;
+        private Guna.UI2.WinForms.Guna2Button guna2Button1;
+        private Label label3;
     }
 }
