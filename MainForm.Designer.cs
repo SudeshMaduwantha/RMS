@@ -156,6 +156,7 @@
             btnKitchen.TabIndex = 8;
             btnKitchen.Text = "Kitchen";
             btnKitchen.TextOffset = new Point(5, 0);
+            btnKitchen.Click += btnKitchen_Click;
             // 
             // btnPOS
             // 

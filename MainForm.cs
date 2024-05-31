@@ -76,5 +76,10 @@ namespace RMS
             POS pOS = new POS();
             pOS.ShowDialog();
         }
+
+        private void btnKitchen_Click(object sender, EventArgs e)
+        {
+            AddControls(new KitchenView());
+        }
     }
 }
