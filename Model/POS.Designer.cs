@@ -76,11 +76,13 @@
             guna2DataGridView1 = new Guna.UI2.WinForms.Guna2DataGridView();
             dgvSno = new DataGridViewTextBoxColumn();
             dgvid = new DataGridViewTextBoxColumn();
+            proID = new DataGridViewTextBoxColumn();
             dgvName = new DataGridViewTextBoxColumn();
             dgvPrice = new DataGridViewTextBoxColumn();
             dgvQty = new DataGridViewTextBoxColumn();
             dgvAmount = new DataGridViewTextBoxColumn();
             SearchTxt = new Guna.UI2.WinForms.Guna2TextBox();
+            guna2MessageDialog1 = new Guna.UI2.WinForms.Guna2MessageDialog();
             guna2Panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)btnExit).BeginInit();
             ((System.ComponentModel.ISupportInitialize)guna2PictureBox1).BeginInit();
@@ -177,6 +179,7 @@
             BtnDin.Size = new Size(78, 78);
             BtnDin.TabIndex = 8;
             BtnDin.Text = "Din In";
+            BtnDin.Click += BtnDin_Click;
             // 
             // btnTake
             // 
@@ -203,6 +206,7 @@
             btnTake.Size = new Size(78, 78);
             btnTake.TabIndex = 7;
             btnTake.Text = "Take Away";
+            btnTake.Click += btnTake_Click;
             // 
             // btnDelivery
             // 
@@ -229,6 +233,7 @@
             btnDelivery.Size = new Size(78, 78);
             btnDelivery.TabIndex = 6;
             btnDelivery.Text = "Delivery";
+            btnDelivery.Click += btnDelivery_Click;
             // 
             // btnKot
             // 
@@ -255,6 +260,7 @@
             btnKot.TabIndex = 5;
             btnKot.Text = "KOT";
             btnKot.TextOffset = new Point(0, -5);
+            btnKot.Click += btnKot_Click;
             // 
             // btnBill
             // 
@@ -331,6 +337,7 @@
             btnNew.TabIndex = 2;
             btnNew.Text = "New";
             btnNew.TextOffset = new Point(0, -5);
+            btnNew.Click += btnNew_Click;
             // 
             // label1
             // 
@@ -430,7 +437,7 @@
             guna2DataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             guna2DataGridView1.ColumnHeadersHeight = 40;
             guna2DataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            guna2DataGridView1.Columns.AddRange(new DataGridViewColumn[] { dgvSno, dgvid, dgvName, dgvPrice, dgvQty, dgvAmount });
+            guna2DataGridView1.Columns.AddRange(new DataGridViewColumn[] { dgvSno, dgvid, proID, dgvName, dgvPrice, dgvQty, dgvAmount });
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = Color.White;
             dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
@@ -487,6 +494,13 @@
             dgvid.Name = "dgvid";
             dgvid.ReadOnly = true;
             dgvid.Visible = false;
+            // 
+            // proID
+            // 
+            proID.HeaderText = "ProductID";
+            proID.Name = "proID";
+            proID.ReadOnly = true;
+            proID.Visible = false;
             // 
             // dgvName
             // 
@@ -547,6 +561,15 @@
             SearchTxt.TabIndex = 9;
             SearchTxt.TextChanged += SearchTxt_TextChanged;
             // 
+            // guna2MessageDialog1
+            // 
+            guna2MessageDialog1.Buttons = Guna.UI2.WinForms.MessageDialogButtons.OK;
+            guna2MessageDialog1.Caption = "RMS";
+            guna2MessageDialog1.Icon = Guna.UI2.WinForms.MessageDialogIcon.Information;
+            guna2MessageDialog1.Parent = null;
+            guna2MessageDialog1.Style = Guna.UI2.WinForms.MessageDialogStyle.Light;
+            guna2MessageDialog1.Text = null;
+            // 
             // POS
             // 
             AutoScaleMode = AutoScaleMode.None;
@@ -593,13 +616,15 @@
         private FlowLayoutPanel ProductPanel;
         private Guna.UI2.WinForms.Guna2DataGridView guna2DataGridView1;
         public Guna.UI2.WinForms.Guna2TextBox SearchTxt;
+        private Label lblTotal;
+        private Label label2;
         private DataGridViewTextBoxColumn dgvSno;
         private DataGridViewTextBoxColumn dgvid;
+        private DataGridViewTextBoxColumn proID;
         private DataGridViewTextBoxColumn dgvName;
         private DataGridViewTextBoxColumn dgvPrice;
         private DataGridViewTextBoxColumn dgvQty;
         private DataGridViewTextBoxColumn dgvAmount;
-        private Label lblTotal;
-        private Label label2;
+        private Guna.UI2.WinForms.Guna2MessageDialog guna2MessageDialog1;
     }
 }
