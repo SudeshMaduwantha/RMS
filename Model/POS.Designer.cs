@@ -73,6 +73,7 @@
             label1 = new Label();
             guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
             guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
+            label3 = new Label();
             btnCheckout = new Guna.UI2.WinForms.Guna2Button();
             lblTotal = new Label();
             label2 = new Label();
@@ -89,7 +90,7 @@
             SearchTxt = new Guna.UI2.WinForms.Guna2TextBox();
             guna2MessageDialog1 = new Guna.UI2.WinForms.Guna2MessageDialog();
             guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
-            label3 = new Label();
+            lblDriverName = new Label();
             guna2Panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)btnExit).BeginInit();
             ((System.ComponentModel.ISupportInitialize)guna2PictureBox1).BeginInit();
@@ -389,6 +390,18 @@
             guna2Panel2.Size = new Size(1187, 100);
             guna2Panel2.TabIndex = 1;
             // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.BackColor = Color.Transparent;
+            label3.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label3.ForeColor = Color.DarkGray;
+            label3.Location = new Point(3, 80);
+            label3.Name = "label3";
+            label3.Size = new Size(287, 17);
+            label3.TabIndex = 0;
+            label3.Text = "Developped By Sudesh Maduwantha Kumarasiri";
+            // 
             // btnCheckout
             // 
             btnCheckout.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
@@ -621,22 +634,22 @@
             guna2Button1.TabIndex = 0;
             guna2Button1.Text = "All Categories";
             // 
-            // label3
+            // lblDriverName
             // 
-            label3.AutoSize = true;
-            label3.BackColor = Color.Transparent;
-            label3.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label3.ForeColor = Color.DarkGray;
-            label3.Location = new Point(3, 80);
-            label3.Name = "label3";
-            label3.Size = new Size(287, 17);
-            label3.TabIndex = 0;
-            label3.Text = "Developped By Sudesh Maduwantha Kumarasiri";
+            lblDriverName.AutoSize = true;
+            lblDriverName.BackColor = Color.Transparent;
+            lblDriverName.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            lblDriverName.ForeColor = Color.FromArgb(64, 64, 64);
+            lblDriverName.Location = new Point(381, 119);
+            lblDriverName.Name = "lblDriverName";
+            lblDriverName.Size = new Size(0, 30);
+            lblDriverName.TabIndex = 12;
             // 
             // POS
             // 
             AutoScaleMode = AutoScaleMode.None;
             ClientSize = new Size(1187, 690);
+            Controls.Add(lblDriverName);
             Controls.Add(guna2Button1);
             Controls.Add(SearchTxt);
             Controls.Add(guna2DataGridView1);
@@ -658,6 +671,7 @@
             guna2Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)guna2DataGridView1).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -693,5 +707,6 @@
         public Guna.UI2.WinForms.Guna2Button btnCheckout;
         private Guna.UI2.WinForms.Guna2Button guna2Button1;
         private Label label3;
+        private Label lblDriverName;
     }
 }

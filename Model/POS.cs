@@ -26,6 +26,9 @@ namespace RMS.Model
 
         public int MainID = 0;
         public string Ordertype = "";
+        public int driverID = 0;
+        public string customerName = " ";
+        public string customerPhone = " ";
         private void btnExit_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -267,22 +270,51 @@ namespace RMS.Model
             lblTable.Visible = false;
             lblWaiter.Visible = false;
             Ordertype = "Delivery";
+
+            AddCustomer addCustomer = new AddCustomer();
+            addCustomer.mainID = MainID;
+            addCustomer.orderType = Ordertype;
+            addCustomer.ShowDialog();
+
+            if (!string.IsNullOrWhiteSpace(addCustomer.txtName.Text)) // Check for non-empty name
+            {
+                driverID = addCustomer.driverID;
+                lblDriverName.Text = " Customer Name: " + addCustomer.txtName.Text + "  Phone: " + addCustomer.txtPhone.Text + "  Driver: " + addCustomer.cbDriver.Text;
+                lblDriverName.Visible = true;
+                customerName = addCustomer.txtName.Text;
+                customerPhone = addCustomer.txtPhone.Text;
+            }
         }
 
         private void btnTake_Click(object sender, EventArgs e)
         {
-
             lblTable.Text = "";
             lblWaiter.Text = "";
             lblTable.Visible = false;
             lblWaiter.Visible = false;
             Ordertype = "Take Away";
+
+            AddCustomer addCustomer = new AddCustomer();
+            addCustomer.mainID = MainID;
+            addCustomer.orderType = Ordertype;
+            addCustomer.ShowDialog();
+
+            if (!string.IsNullOrWhiteSpace(addCustomer.txtName.Text)) // Check for non-empty name
+            {
+                driverID = addCustomer.driverID;
+                lblDriverName.Text = " Customer Name: " + addCustomer.txtName.Text + "  Phone: " + addCustomer.txtPhone.Text;
+                lblDriverName.Visible = true;
+                customerName = addCustomer.txtName.Text;
+                customerPhone = addCustomer.txtPhone.Text;
+            }
         }
+
 
         private void BtnDin_Click(object sender, EventArgs e)
         {
 
             Ordertype = "Din In";
+            lblDriverName.Visible = false;
             //Need to create form for table selection and waiter selection
             TableSelect tableSelect = new TableSelect();
             tableSelect.ShowDialog();
@@ -319,6 +351,7 @@ namespace RMS.Model
         {
             // Save the data in database
             // Create tables
+            // Need to add field to database to store additional info
 
             string qry1 = "";
             string qry2 = "";
@@ -327,8 +360,10 @@ namespace RMS.Model
 
             if (MainID == 0)
             {
-                qry1 = @"Insert into tblMain (aDate, aTime, TableName, WaiterName, status, orderType, total, received, change)
-                 Values (@aDate, @aTime, @TableName, @WaiterName, @status, @orderType, @total, @received, @change);
+                qry1 = @"Insert into tblMain(aDate, aTime, TableName, WaiterName, status, orderType, total, 
+                 received, change,driverID,CustName,CustPhone)
+                 Values (@aDate, @aTime, @TableName, @WaiterName, @status, @orderType, @total, @received, 
+                 @change, @driverID, @CustName, @CustPhone);
                  Select SCOPE_IDENTITY()";
             }
             else // Update
@@ -348,6 +383,9 @@ namespace RMS.Model
             cmd.Parameters.AddWithValue("@total", Convert.ToDouble(lblTotal.Text)); // as we are only saving data for kitchen value will update when payment received
             cmd.Parameters.AddWithValue("@received", Convert.ToDouble(0));
             cmd.Parameters.AddWithValue("@change", Convert.ToDouble(0));
+            cmd.Parameters.AddWithValue("@driverID", driverID);
+            cmd.Parameters.AddWithValue("@CustName", customerName);
+            cmd.Parameters.AddWithValue("@CustPhone", customerPhone);
 
             if (MainClass.con.State == ConnectionState.Closed) { MainClass.con.Open(); }
             if (MainID == 0) { MainID = Convert.ToInt32(cmd.ExecuteScalar()); } else { cmd.ExecuteNonQuery(); }
@@ -390,6 +428,7 @@ namespace RMS.Model
             lblTable.Visible = false;
             lblWaiter.Visible = false;
             lblTotal.Text = "0.00";
+            lblDriverName.Text = "";
         }
 
         public int id = 0;
@@ -497,10 +536,12 @@ namespace RMS.Model
                 return;
             }
 
-            if (MainID == 0)
+            if (MainID == 0)// Insert
             {
-                qry1 = @"Insert into tblMain (aDate, aTime, TableName, WaiterName, status, orderType, total, received, change)
-                 Values (@aDate, @aTime, @TableName, @WaiterName, @status, @orderType, @total, @received, @change);
+                qry1 = @"Insert into tblMain(aDate, aTime, TableName, WaiterName, status, orderType, total, 
+                 received, change,driverID,CustName,CustPhone)
+                 Values (@aDate, @aTime, @TableName, @WaiterName, @status, @orderType, @total, @received, 
+                 @change, @driverID, @CustName, @CustPhone);
                  Select SCOPE_IDENTITY()";
             }
             else // Update
@@ -518,8 +559,11 @@ namespace RMS.Model
             cmd.Parameters.AddWithValue("@status", "Hold");
             cmd.Parameters.AddWithValue("@orderType", Ordertype);
             cmd.Parameters.AddWithValue("@total", Convert.ToDouble(lblTotal.Text));
-            cmd.Parameters.AddWithValue("@received", Convert.ToDouble(0)); 
+            cmd.Parameters.AddWithValue("@received", Convert.ToDouble(0));
             cmd.Parameters.AddWithValue("@change", Convert.ToDouble(0));
+            cmd.Parameters.AddWithValue("@driverID", driverID);
+            cmd.Parameters.AddWithValue("@CustName", customerName);
+            cmd.Parameters.AddWithValue("@CustPhone", customerPhone);
 
             if (MainClass.con.State == ConnectionState.Closed) { MainClass.con.Open(); }
             if (MainID == 0) { MainID = Convert.ToInt32(cmd.ExecuteScalar()); } else { cmd.ExecuteNonQuery(); }
@@ -562,6 +606,7 @@ namespace RMS.Model
             lblTable.Visible = false;
             lblWaiter.Visible = false;
             lblTotal.Text = "0.00";
+            lblDriverName.Text = "";
         }
 
     }
