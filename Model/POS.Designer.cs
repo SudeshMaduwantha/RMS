@@ -319,6 +319,7 @@
             btnHold.Size = new Size(78, 78);
             btnHold.TabIndex = 3;
             btnHold.Text = "Hold";
+            btnHold.Click += btnHold_Click;
             // 
             // btnNew
             // 

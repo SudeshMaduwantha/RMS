@@ -37,7 +37,7 @@ namespace RMS.Model
 
         public override void btnSave_Click(object sender, EventArgs e)
         {
-            string qry = @"Update tblMain set total = @total , recieved = @rec, change = @change , 
+            string qry = @"Update tblMain set total = @total , received = @rec, change = @change , 
                           status = 'Paid'  where MainID = @id";
 
             Hashtable ht = new Hashtable();
